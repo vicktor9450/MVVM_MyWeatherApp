@@ -14,18 +14,23 @@ struct ContentView: View {
     
     init() {
         self.weatherVM = WeatherViewModel()
-
+        
     }
     
     var body: some View {
-        VStack {
-            Text("Welcome to Weather App")
-        TextField("Enter City", text: self.$weatherVM.cityName) {
-            self.weatherVM.search()
-        }
-        .padding()
-            Text("Temperatureis: \(self.weatherVM.temperature)")
-            Text("Humidity is: \(self.weatherVM.humidity)")
+        ZStack{
+            
+            BackgroundView()
+            VStack {
+                Text("Welcome to Weather App")
+                    .font(.largeTitle)
+                TextField("Enter City", text: self.$weatherVM.cityName) {
+                    self.weatherVM.search()
+                }
+                .padding(20)
+                Text("Temperature is: \(self.weatherVM.temperature)")
+                Text("Humidity is: \(self.weatherVM.humidity)")
+            }
         }
     }
 }
@@ -35,3 +40,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
