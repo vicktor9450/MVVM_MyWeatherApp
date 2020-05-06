@@ -70,8 +70,6 @@ extension Resource {
     }
 }
 
-var cityForFetch = Resource(city: "Ho chi minh")
-
 func preparingCity(city: String) -> String {
     let cityPrepared = Resource(city: city)
         return cityPrepared.city

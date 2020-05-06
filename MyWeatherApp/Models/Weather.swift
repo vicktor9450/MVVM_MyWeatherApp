@@ -15,4 +15,6 @@ struct WeatherResponse: Decodable {
 struct Weather: Decodable {
     var temp: Double?
     var humidity: Double?
+    var temp_min: Double?
+    var temp_max: Double?
 }

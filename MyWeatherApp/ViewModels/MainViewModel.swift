@@ -10,6 +10,8 @@ import Foundation
 import Combine
 
 class WeatherViewModel: ObservableObject {
+    
+    //get machine from weather service: Entity
     private var weatherService: WeatherService!
     
     init () {
@@ -18,6 +20,7 @@ class WeatherViewModel: ObservableObject {
     
     @Published var weather = Weather()
     
+    //value pass to View
     var temperature: String {
         if let temp = self.weather.temp {
             return String(format: "%.0f", temp)
@@ -34,8 +37,27 @@ class WeatherViewModel: ObservableObject {
         }
     }
     
+    var tempMin: String {
+        if let tempMin = self.weather.temp_min {
+            return String(format: "%.0f", tempMin)
+        } else {
+            return ""
+        }
+    }
+    
+    var tempMax: String {
+        if let tempMax = self.weather.temp_max {
+            return String(format: "%.0f", tempMax)
+        } else {
+            return ""
+        }
+        
+    }
+    
+    //value get from View
     var cityName: String = ""
-
+    
+    //make suitable machines for View
     func fetchWeather() {
         self.weatherService.getWeather(city: self.cityName) {
             weather in
