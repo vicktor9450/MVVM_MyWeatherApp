@@ -14,7 +14,6 @@ class WeatherViewModel: ObservableObject {
     
     init () {
         self.weatherService = WeatherService()
-        
     }
     
     @Published var weather = Weather()
@@ -36,15 +35,9 @@ class WeatherViewModel: ObservableObject {
     }
     
     var cityName: String = ""
-    
-    func search() {
-        if let city = self.cityName.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
-            fetchWeather(by: city)
-        }
-    }
-    
-    private func fetchWeather( by city: String) {
-        self.weatherService.getWeather(city: city) {
+
+    func fetchWeather() {
+        self.weatherService.getWeather(city: self.cityName) {
             weather in
             if let weather = weather {
                 DispatchQueue.main.async {
@@ -54,3 +47,8 @@ class WeatherViewModel: ObservableObject {
         }
     }
 }
+
+
+
+
+

@@ -25,7 +25,7 @@ struct ContentView: View {
                 Text("Welcome to Weather App")
                     .font(.largeTitle)
                 TextField("Enter City", text: self.$weatherVM.cityName) {
-                    self.weatherVM.search()
+                    self.weatherVM.fetchWeather()
                 }
                 .padding(20)
                 Text("Temperature is: \(self.weatherVM.temperature)")
