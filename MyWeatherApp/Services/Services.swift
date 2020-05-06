@@ -9,11 +9,11 @@
 import Foundation
 
 class WeatherService {
-    func getWeather(city: String, completion: @escaping (Weather?) -> ()) {
+    func getWeather(city: String, completion: @escaping (WeatherTopLevel?) -> ()) {
         //Preparing city compatible with requesting API
         
         //Modify string city: in to allowed character
-        //Explain; If request with city name "Ho chi minh" the space in string will crash the request, need to add "%20" in the space in city to be "Ho%20chi%20minh"
+        //Explain: If request with city name "Ho chi minh" the space in string will crash the request, need to add "%20" in the space in city to be "Ho%20chi%20minh"
         //Improved with @propertyWrapper
         
         //verifying URL
@@ -21,23 +21,25 @@ class WeatherService {
             completion(nil)
             return
         }
-        
+        print(url)
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data, error == nil else {
+                //print("\(error) at data")
                 completion(nil)
                 return
             }
             
-            let weatherResponse = try? JSONDecoder().decode(WeatherResponse.self, from: data)
-            if let weatherResponse = weatherResponse {
-                let weather = weatherResponse.main
+            let weather = try? JSONDecoder().decode(WeatherTopLevel.self, from: data)
+            if let weather = weather {
                 completion(weather)
             } else {
                 completion(nil)
+                //print("\(error) at JSON decode")
+                
             }
         }
-    .resume()
+        .resume()
     }
 }
 //MARK:- propertyWrapper UrlEncode
@@ -72,6 +74,6 @@ extension Resource {
 
 func preparingCity(city: String) -> String {
     let cityPrepared = Resource(city: city)
-        return cityPrepared.city
-    }
+    return cityPrepared.city
+}
 

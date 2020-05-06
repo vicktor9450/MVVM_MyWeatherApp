@@ -31,8 +31,12 @@ struct ContentView: View {
                 .padding(20)
                 //get from viewModel
                 VStack(alignment: .leading) {
+                    Text("ここは: \(self.weatherVM.location) in \(self.weatherVM.country)")
+                    Text("Sun rise at: \(self.weatherVM.sunRise) & Sun set at: \(self.weatherVM.sunSet)")
+                    Text("Wind Speed: \(self.weatherVM.windSpeed)")
                     Text("Temperature is: \(self.weatherVM.temperature)")
-                        Text("Temperature Min & Max is: \(self.weatherVM.tempMin) & \(self.weatherVM.tempMax)")
+                    Text("Temperature Min & Max is: \(self.weatherVM.tempMin) & \(self.weatherVM.tempMax)")
+                    Text("Condition: \(self.weatherVM.weatherDescription)")
                     Text("Humidity is: \(self.weatherVM.humidity)")
                 }
             }

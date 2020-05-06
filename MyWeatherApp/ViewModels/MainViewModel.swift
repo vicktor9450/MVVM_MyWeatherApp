@@ -16,29 +16,90 @@ class WeatherViewModel: ObservableObject {
     
     init () {
         self.weatherService = WeatherService()
+        
     }
     
-    @Published var weather = Weather()
+    @Published var weatherResponse =  WeatherTopLevel()
+    
+
     
     //value pass to View
-    var temperature: String {
-        if let temp = self.weather.temp {
-            return String(format: "%.0f", temp)
+    
+    var weatherDescription: String {
+        if let description = self.weatherResponse.weather?.first?.description {
+            let formattedDesc = description.capitalized(with: .current)
+            
+            return formattedDesc
+        }else {
+            return ""
+        }
+    }
+    
+//    var weatherDescription: String {
+//        if let weatherDescription = self.weatherResponse.weather
+//    }
+    
+    var sunRise: String {
+        if let sunRise = self.weatherResponse.sys?.sunrise {
+            let formattedSunRise = Helper().timeFormatter(input: sunRise)
+            return formattedSunRise
+        }else {
+             return ""
+        }
+    }
+    
+    var sunSet: String {
+        if let sunSet = self.weatherResponse.sys?.sunset {
+            let formattedSunSet = Helper().timeFormatter(input: sunSet)
+            return formattedSunSet
+            
+        }else {
+             return ""
+        }
+    }
+    
+    var country: String {
+        if let country = self.weatherResponse.sys?.country {
+            return String(country)
         } else {
             return ""
         }
     }
     
+    var windSpeed: String {
+        if let windSpeed = self.weatherResponse.wind?.speed {
+            return String(windSpeed)
+        } else {
+            return ""
+        }
+    }
+    
+    var location: String {
+        if let location = self.weatherResponse.name {
+            return String(location)
+        } else {
+            return ""
+        }
+    }
+
     var humidity: String {
-        if let humidity = self.weather.humidity {
+        if let humidity = self.weatherResponse.main?.humidity {
             return String(format: "%.0f", humidity)
         } else {
             return ""
         }
     }
     
+    var temperature: String {
+        if let temp = self.weatherResponse.main?.temp {
+            return String(format: "%.0f", temp)
+        } else {
+            return ""
+        }
+    }
+    
     var tempMin: String {
-        if let tempMin = self.weather.temp_min {
+        if let tempMin = self.weatherResponse.main?.temp_min {
             return String(format: "%.0f", tempMin)
         } else {
             return ""
@@ -46,7 +107,7 @@ class WeatherViewModel: ObservableObject {
     }
     
     var tempMax: String {
-        if let tempMax = self.weather.temp_max {
+        if let tempMax = self.weatherResponse.main?.temp_max {
             return String(format: "%.0f", tempMax)
         } else {
             return ""
@@ -63,7 +124,7 @@ class WeatherViewModel: ObservableObject {
             weather in
             if let weather = weather {
                 DispatchQueue.main.async {
-                    self.weather = weather
+                    self.weatherResponse = weather
                 }
             }
         }
