@@ -16,4 +16,9 @@ class Helper {
         formatter.dateFormat = "hh:mm a"
         return(formatter.string(from: unixTime as Date))
     }
+    
+    func logPosition() {
+        let position = "the position when itself declared"
+        print(position)
+    }
 }

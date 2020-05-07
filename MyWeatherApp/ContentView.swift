@@ -11,11 +11,7 @@ import SwiftUI
 struct ContentView: View {
     
     //get connection to viewModel
-    @ObservedObject var weatherVM : WeatherViewModel
-    
-    init() {
-        self.weatherVM = WeatherViewModel()
-    }
+
     
     var body: some View {
         ZStack{
@@ -25,31 +21,25 @@ struct ContentView: View {
                     .font(.largeTitle)
                     .padding()
                 //pass to viewModel
-                TextField("Enter City", text: self.$weatherVM.cityName) {
-                    self.weatherVM.fetchWeather()
-                }
-                .padding(20)
+                WeatherContentView()
+                    .padding(20)
                 //get from viewModel
-                VStack(alignment: .leading) {
-                    Text("ここは: \(self.weatherVM.location) in \(self.weatherVM.country)")
-                    Text("Sun rise at: \(self.weatherVM.sunRise) & Sun set at: \(self.weatherVM.sunSet)")
-                    Text("Wind Speed: \(self.weatherVM.windSpeed)")
-                    Text("Temperature is: \(self.weatherVM.temperature)")
-                    Text("Temperature Min & Max is: \(self.weatherVM.tempMin) & \(self.weatherVM.tempMax)")
-                    Text("Condition: \(self.weatherVM.weatherDescription)")
-                    Text("Humidity is: \(self.weatherVM.humidity)")
-                }
+                //MidView()
+                
+                
             }
         }
     }
 }
 
+
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ForEach(["iPhone XS Max","iPhone XS", "iPhone SE"], id: \.self) { device in
-        ContentView()
-            .previewDevice(PreviewDevice(rawValue: device))
-            .previewDisplayName(device)
+            ContentView()
+                .previewDevice(PreviewDevice(rawValue: device))
+                .previewDisplayName(device)
         }
     }
 }

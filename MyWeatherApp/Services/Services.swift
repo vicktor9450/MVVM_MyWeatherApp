@@ -8,24 +8,36 @@
 
 import Foundation
 
+
+
+
 class WeatherService {
     func getWeather(city: String, completion: @escaping (WeatherTopLevel?) -> ()) {
-        //Preparing city compatible with requesting API
-        
-        //Modify string city: in to allowed character
-        //Explain: If request with city name "Ho chi minh" the space in string will crash the request, need to add "%20" in the space in city to be "Ho%20chi%20minh"
-        //Improved with @propertyWrapper
-        
-        //verifying URL
+        /* Explain why cityName need to be Prepaing
+         //Preparing city compatible with requesting API
+         
+         //Modify string city: in to allowed character
+         //Explain: If request with city name "Ho chi minh" the space in string will crash the request, need to add "%20" in the space in city to be "Ho%20chi%20minh"
+         //Improved with @propertyWrapper
+         //Or using this method
+         //        func searchCity() {
+         //            if let city = self.cityName.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
+         //                fetchWeatherForecast(by: city)
+         //            }
+         //        }
+         
+         //verifying URL
+         */
         guard let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?q=\(preparingCity(city: city))&appid=2b69974a3a50ec3b37511b30332a1463&units=metric&lang=ja") else {
             completion(nil)
+            
             return
         }
         print(url)
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data, error == nil else {
-                //print("\(error) at data")
+                print("\(String(describing: error)) at data")
                 completion(nil)
                 return
             }
@@ -33,9 +45,11 @@ class WeatherService {
             let weather = try? JSONDecoder().decode(WeatherTopLevel.self, from: data)
             if let weather = weather {
                 completion(weather)
+            
+                print(weather)
             } else {
                 completion(nil)
-                //print("\(error) at JSON decode")
+                print("\(String(describing: error)) at JSON decode")
                 
             }
         }

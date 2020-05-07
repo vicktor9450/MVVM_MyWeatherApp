@@ -15,6 +15,7 @@ class WeatherViewModel: ObservableObject {
     private var weatherService: WeatherService!
     
     init () {
+        print("WeatherViewModel:init weatherService Object")
         self.weatherService = WeatherService()
         
     }
@@ -28,7 +29,7 @@ class WeatherViewModel: ObservableObject {
     var weatherDescription: String {
         if let description = self.weatherResponse.weather?.first?.description {
             let formattedDesc = description.capitalized(with: .current)
-            
+            print("WeatherViewMode: created weatherDescription")
             return formattedDesc
         }else {
             return ""
@@ -116,10 +117,12 @@ class WeatherViewModel: ObservableObject {
     }
     
     //value get from View
-    var cityName: String = ""
+    //by default city is FUKUI
+    var cityName: String = "Fukui"
     
     //make suitable machines for View
     func fetchWeather() {
+        print("WeatherViewModel: init fetchWeather")
         self.weatherService.getWeather(city: self.cityName) {
             weather in
             if let weather = weather {
