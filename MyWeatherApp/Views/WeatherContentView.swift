@@ -29,6 +29,8 @@ struct WeatherContentView: View {
     var body: some View {
         VStack {
             VStack(alignment: .leading) {
+                
+                Image(systemName: self.weatherVM.descriptionIcon)
                 Text("ここは: \(self.weatherVM.location) in \(self.weatherVM.country)")
                 Text("Sun rise at: \(self.weatherVM.sunRise) & Sun set at: \(self.weatherVM.sunSet)")
                 Text("Wind Speed: \(self.weatherVM.windSpeed)")
@@ -39,6 +41,9 @@ struct WeatherContentView: View {
                 
             }
             .onAppear(perform: fetch)
+            
+            
+            
             ZStack(alignment: .leading) {
                 TextField("Enter City name", text: self.$weatherVM.cityName) {
                     self.weatherVM.fetchWeather()
@@ -60,9 +65,6 @@ struct WeatherContentView: View {
                     .onTapGesture {
                         self.showField.toggle()
                 }
-                
-
-                
             }
             
         }

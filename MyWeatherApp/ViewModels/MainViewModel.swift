@@ -11,21 +11,26 @@ import Combine
 
 class WeatherViewModel: ObservableObject {
     
-    //get machine from weather service: Entity
+    //MARK: Get machine from weather service: Entity
     private var weatherService: WeatherService!
+    private var helper: Helper!
     
     init () {
         print("WeatherViewModel:init weatherService Object")
         self.weatherService = WeatherService()
+        self.helper = Helper()
+        
         
     }
     
     @Published var weatherResponse =  WeatherTopLevel()
     
-
     
-    //value pass to View
     
+    //MARK:- Value pass to View
+    
+    
+    //Weather parameters
     var weatherDescription: String {
         if let description = self.weatherResponse.weather?.first?.description {
             let formattedDesc = description.capitalized(with: .current)
@@ -36,16 +41,12 @@ class WeatherViewModel: ObservableObject {
         }
     }
     
-//    var weatherDescription: String {
-//        if let weatherDescription = self.weatherResponse.weather
-//    }
-    
     var sunRise: String {
         if let sunRise = self.weatherResponse.sys?.sunrise {
             let formattedSunRise = Helper().timeFormatter(input: sunRise)
             return formattedSunRise
         }else {
-             return ""
+            return ""
         }
     }
     
@@ -55,7 +56,7 @@ class WeatherViewModel: ObservableObject {
             return formattedSunSet
             
         }else {
-             return ""
+            return ""
         }
     }
     
@@ -82,7 +83,7 @@ class WeatherViewModel: ObservableObject {
             return ""
         }
     }
-
+    
     var humidity: String {
         if let humidity = self.weatherResponse.main?.humidity {
             return String(format: "%.0f", humidity)
@@ -116,11 +117,22 @@ class WeatherViewModel: ObservableObject {
         
     }
     
-    //value get from View
+    //Weather icons
+    var descriptionIcon: String {
+        if let iconName = self.weatherResponse.weather?.first {
+            let iconNameCoded = helper.showWeatherIcon(item: iconName)
+            return iconNameCoded
+        } else {
+            return ""
+        }
+    }
+    
+    
+    //MARK:- Value get from View
     //by default city is FUKUI
     var cityName: String = "Fukui"
     
-    //make suitable machines for View
+    //MARK:- Making suitable machines for View
     func fetchWeather() {
         print("WeatherViewModel: init fetchWeather")
         self.weatherService.getWeather(city: self.cityName) {
