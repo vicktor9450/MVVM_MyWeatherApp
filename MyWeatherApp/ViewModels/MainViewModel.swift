@@ -9,6 +9,7 @@
 import Foundation
 import Combine
 
+
 class WeatherViewModel: ObservableObject {
     
     //get machine from weather service: Entity
@@ -119,6 +120,10 @@ class WeatherViewModel: ObservableObject {
     //make suitable machines for View
     func fetchWeather() {
         print("WeatherViewModel: init fetchWeather")
+        
+        //Checking internet connection
+        Helper().NetworkDetector()
+        
         self.weatherService.getWeather(city: self.cityName) {
             weather in
             if let weather = weather {

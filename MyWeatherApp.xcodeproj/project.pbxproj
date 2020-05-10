@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		141353F82462A1AA00B5BF6A /* TimeConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141353F72462A1AA00B5BF6A /* TimeConverter.swift */; };
+		141353F82462A1AA00B5BF6A /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141353F72462A1AA00B5BF6A /* Helpers.swift */; };
 		141353FA2462F22C00B5BF6A /* WeatherContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141353F92462F22C00B5BF6A /* WeatherContentView.swift */; };
 		14DC831B246020AE00BD99B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DC831A246020AE00BD99B5 /* AppDelegate.swift */; };
 		14DC831D246020AE00BD99B5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DC831C246020AE00BD99B5 /* SceneDelegate.swift */; };
@@ -22,7 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		141353F72462A1AA00B5BF6A /* TimeConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeConverter.swift; sourceTree = "<group>"; };
+		141353F72462A1AA00B5BF6A /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		141353F92462F22C00B5BF6A /* WeatherContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherContentView.swift; sourceTree = "<group>"; };
 		14DC8317246020AE00BD99B5 /* MyWeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyWeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14DC831A246020AE00BD99B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -52,7 +52,7 @@
 		141353F62462A19900B5BF6A /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				141353F72462A1AA00B5BF6A /* TimeConverter.swift */,
+				141353F72462A1AA00B5BF6A /* Helpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -217,7 +217,7 @@
 				14DC831B246020AE00BD99B5 /* AppDelegate.swift in Sources */,
 				14DC833A246043CB00BD99B5 /* BackgroundView.swift in Sources */,
 				14DC831D246020AE00BD99B5 /* SceneDelegate.swift in Sources */,
-				141353F82462A1AA00B5BF6A /* TimeConverter.swift in Sources */,
+				141353F82462A1AA00B5BF6A /* Helpers.swift in Sources */,
 				14DC831F246020AE00BD99B5 /* ContentView.swift in Sources */,
 				141353FA2462F22C00B5BF6A /* WeatherContentView.swift in Sources */,
 				14DC83372460390B00BD99B5 /* MainViewModel.swift in Sources */,
@@ -365,6 +365,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vicktor9450.MyWeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -385,6 +386,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vicktor9450.MyWeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

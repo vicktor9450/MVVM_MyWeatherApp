@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
     
     //get connection to viewModel
