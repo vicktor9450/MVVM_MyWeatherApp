@@ -60,11 +60,7 @@ class WeatherViewModel: ObservableObject {
     }
     
     var country: String {
-        if let country = self.weatherResponse.sys?.country {
-            return String(country)
-        } else {
-            return ""
-        }
+        return Helper().showDecodedCountry(item: weatherResponse)
     }
     
     var windSpeed: String {
@@ -85,7 +81,7 @@ class WeatherViewModel: ObservableObject {
 
     var humidity: String {
         if let humidity = self.weatherResponse.main?.humidity {
-            return String(format: "%.0f", humidity)
+            return String(format: "%.0f", humidity) + " %"
         } else {
             return ""
         }
@@ -93,7 +89,7 @@ class WeatherViewModel: ObservableObject {
     
     var temperature: String {
         if let temp = self.weatherResponse.main?.temp {
-            return String(format: "%.0f", temp)
+            return String(format: "%.0f", temp) + "℃"
         } else {
             return ""
         }

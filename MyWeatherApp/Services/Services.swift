@@ -7,6 +7,14 @@
 //
 
 import Foundation
+import CoreLocation
+
+class WeatherViewControl: CLLocationManager {
+    let locationManager = CLLocationManager()
+    
+    //Setup location manager
+    
+}
 
 
 
@@ -35,7 +43,12 @@ class WeatherService {
         }
         print(url)
         
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+        //make URLSession waiting for internet connection
+        let config = URLSessionConfiguration.default
+        config.waitsForConnectivity = true
+        config.timeoutIntervalForResource = 60
+        
+        URLSession(configuration: config).dataTask(with: url) { (data, response, error) in
             guard let data = data, error == nil else {
                 print("\(String(describing: error)) at data")
                 completion(nil)

@@ -71,9 +71,18 @@ struct WeatherContentView: View {
 }
 
 
-struct TopView_Previews: PreviewProvider {
+#if DEBUG
+struct WeatherContentView_Previews: PreviewProvider {
     static var previews: some View {
-        WeatherContentView()
-        
+        Group {
+            WeatherContentView()
+                .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
+            WeatherContentView()
+                .environment(\.colorScheme, .dark)
+            NavigationView {
+                WeatherContentView()
+            }
+        }
     }
 }
+#endif
