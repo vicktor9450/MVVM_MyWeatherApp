@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 
 struct ContentView: View {
@@ -26,7 +27,7 @@ struct ContentView: View {
                     .padding(20)
                 //get from viewModel
                 //MidView()
-                
+                Text(UIDevice.modelName)
                 
             }
         }

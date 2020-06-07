@@ -23,7 +23,6 @@ class WeatherViewModel: ObservableObject {
     
     @Published var weatherResponse =  WeatherTopLevel()
     
-
     
     //value pass to View
     
@@ -36,10 +35,6 @@ class WeatherViewModel: ObservableObject {
             return ""
         }
     }
-    
-//    var weatherDescription: String {
-//        if let weatherDescription = self.weatherResponse.weather
-//    }
     
     var sunRise: String {
         if let sunRise = self.weatherResponse.sys?.sunrise {
@@ -134,6 +129,7 @@ class WeatherViewModel: ObservableObject {
         }
     }
 }
+
 
 
 

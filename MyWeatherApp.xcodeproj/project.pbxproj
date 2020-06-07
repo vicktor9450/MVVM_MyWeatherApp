@@ -19,6 +19,7 @@
 		14DC83342460216E00BD99B5 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DC83332460216E00BD99B5 /* Services.swift */; };
 		14DC83372460390B00BD99B5 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DC83362460390B00BD99B5 /* MainViewModel.swift */; };
 		14DC833A246043CB00BD99B5 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DC8339246043CB00BD99B5 /* BackgroundView.swift */; };
+		14FEFACF248CBCB100838984 /* DevicePlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FEFACE248CBCB100838984 /* DevicePlatform.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		14DC83332460216E00BD99B5 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		14DC83362460390B00BD99B5 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		14DC8339246043CB00BD99B5 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		14FEFACE248CBCB100838984 /* DevicePlatform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicePlatform.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +54,7 @@
 		141353F62462A19900B5BF6A /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				14FEFACB248CB9F600838984 /* Extensions */,
 				141353F72462A1AA00B5BF6A /* Helpers.swift */,
 			);
 			path = Helpers;
@@ -141,6 +144,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		14FEFACB248CB9F600838984 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				14FEFACE248CBCB100838984 /* DevicePlatform.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -215,6 +226,7 @@
 				14DC83342460216E00BD99B5 /* Services.swift in Sources */,
 				14DC8331246020D600BD99B5 /* WeatherTopLevel.swift in Sources */,
 				14DC831B246020AE00BD99B5 /* AppDelegate.swift in Sources */,
+				14FEFACF248CBCB100838984 /* DevicePlatform.swift in Sources */,
 				14DC833A246043CB00BD99B5 /* BackgroundView.swift in Sources */,
 				14DC831D246020AE00BD99B5 /* SceneDelegate.swift in Sources */,
 				141353F82462A1AA00B5BF6A /* Helpers.swift in Sources */,
@@ -358,7 +370,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MyWeatherApp/Preview Content\"";
-				DEVELOPMENT_TEAM = KH3NKY63UJ;
+				DEVELOPMENT_TEAM = MJK78DVF5K;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "MyWeatherApp/Supported Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -379,7 +391,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MyWeatherApp/Preview Content\"";
-				DEVELOPMENT_TEAM = KH3NKY63UJ;
+				DEVELOPMENT_TEAM = MJK78DVF5K;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "MyWeatherApp/Supported Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (

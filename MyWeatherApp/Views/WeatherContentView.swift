@@ -29,8 +29,12 @@ struct WeatherContentView: View {
     var body: some View {
         VStack {
             VStack(alignment: .leading) {
-                Text("ここは: \(self.weatherVM.location) in \(self.weatherVM.country)")
+                Text("Place: \(self.weatherVM.location) in \(self.weatherVM.country)")
+                    .modifier(PrimaryLabel())
+                   
+                
                 Text("Sun rise at: \(self.weatherVM.sunRise) & Sun set at: \(self.weatherVM.sunSet)")
+                    
                 Text("Wind Speed: \(self.weatherVM.windSpeed)")
                 Text("Temperature is: \(self.weatherVM.temperature)")
                 Text("Temperature Min & Max is: \(self.weatherVM.tempMin) & \(self.weatherVM.tempMax)")
@@ -60,9 +64,6 @@ struct WeatherContentView: View {
                     .onTapGesture {
                         self.showField.toggle()
                 }
-                
-
-                
             }
             
         }
@@ -70,6 +71,16 @@ struct WeatherContentView: View {
     }
 }
 
+//Modifier
+struct PrimaryLabel: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .padding()
+            .background(Color.red)
+            .foregroundColor(Color.white)
+            .font(.headline)
+    }
+}
 
 #if DEBUG
 struct WeatherContentView_Previews: PreviewProvider {
@@ -77,6 +88,7 @@ struct WeatherContentView_Previews: PreviewProvider {
         Group {
             WeatherContentView()
                 .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
+                .previewDisplayName(UIDevice.modelName)
             WeatherContentView()
                 .environment(\.colorScheme, .dark)
             NavigationView {
